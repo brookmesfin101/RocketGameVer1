@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float thrustFactor = 1000f;
     [SerializeField] float rotateSpeed = 100f;
     [SerializeField] ParticleSystem thrustParticles;
+    [SerializeField] ParticleSystem leftThrustParticles;
+    [SerializeField] ParticleSystem rightThrustParticles;
+    [SerializeField] AudioClip thrustSound;
+    AudioSource audioSource;
 
     Rigidbody rb;
 
@@ -15,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,6 +39,47 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         var rotation = new Vector3(horizontal, 0, 0);
         transform.Rotate(rotation * Time.deltaTime * rotateSpeed);
+        LeftRightParticlesControl(horizontal);
+    }
+
+    private void LeftRightParticlesControl(float horizontal)
+    {
+        if (horizontal < 0)
+        {
+            if (!rightThrustParticles.isPlaying)
+            {
+                rightThrustParticles.Play();
+            }
+            if (leftThrustParticles.isPlaying)
+            {
+                leftThrustParticles.Stop();
+            }
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else if (horizontal > 0)
+        {
+            if (!leftThrustParticles.isPlaying)
+            {
+                leftThrustParticles.Play();
+            }
+            if (rightThrustParticles.isPlaying)
+            {
+                rightThrustParticles.Stop();
+            }
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            rightThrustParticles.Stop();
+            leftThrustParticles.Stop();
+            audioSource.Stop();
+        }
     }
 
     private void ProcessThrust()
@@ -44,12 +90,17 @@ public class PlayerMovement : MonoBehaviour
 
             if (!thrustParticles.isPlaying)
             {
-                thrustParticles.Play();
+                thrustParticles.Play();                
+            }
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(thrustSound);
             }
         } 
         else
         {
             thrustParticles.Stop();
+            audioSource.Stop();
         }
     }
 }
