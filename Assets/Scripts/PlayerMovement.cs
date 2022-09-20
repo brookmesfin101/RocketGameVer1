@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
+[RequireComponent(typeof(Rigidbody), typeof(BoxCollider), typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float thrustFactor = 1000f;
@@ -11,15 +11,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] ParticleSystem leftThrustParticles;
     [SerializeField] ParticleSystem rightThrustParticles;
     [SerializeField] AudioClip thrustSound;
-    AudioSource audioSource;
+    [SerializeField] AudioClip thrustSound2;
 
+    AudioSource _audioSource;
     Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         rb = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void LeftRightParticlesControl(float horizontal)
-    {
+    {                
         if (horizontal < 0)
         {
             if (!rightThrustParticles.isPlaying)
@@ -54,10 +55,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 leftThrustParticles.Stop();
             }
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
+            PlayThrustSound();
         }
         else if (horizontal > 0)
         {
@@ -69,38 +67,44 @@ public class PlayerMovement : MonoBehaviour
             {
                 rightThrustParticles.Stop();
             }
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
+            PlayThrustSound();
         }
         else
         {
+            if (!Input.GetKey(KeyCode.Space) && _audioSource.isPlaying)
+            {
+                _audioSource.Stop();
+            }
+
             rightThrustParticles.Stop();
-            leftThrustParticles.Stop();
-            audioSource.Stop();
+            leftThrustParticles.Stop();            
+        }
+    }
+
+    private void PlayThrustSound()
+    {
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.PlayOneShot(thrustSound);
         }
     }
 
     private void ProcessThrust()
     {
         if (Input.GetKey(KeyCode.Space))
-        {
-            rb.AddRelativeForce(Vector3.up * Time.deltaTime * thrustFactor);
-
+        {            
             if (!thrustParticles.isPlaying)
             {
                 thrustParticles.Play();                
             }
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(thrustSound);
-            }
+
+            PlayThrustSound();
+
+            rb.AddRelativeForce(Vector3.up * Time.deltaTime * thrustFactor);
         } 
         else
         {
-            thrustParticles.Stop();
-            audioSource.Stop();
+            thrustParticles.Stop();          
         }
     }
 }

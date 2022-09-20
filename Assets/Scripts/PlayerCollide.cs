@@ -14,6 +14,7 @@ public class PlayerCollide : MonoBehaviour
 
     PlayerMovement playerMovement;
     AudioSource audioSource;
+    bool playerEnabled = true;
 
     private void Start()
     {
@@ -22,22 +23,29 @@ public class PlayerCollide : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other)
-    {       
-        switch (other.gameObject.tag)
+    {
+        if (playerEnabled)
         {
-            case "Finish": 
-                finishParticles.Play();
-                audioSource.clip = successSound;
-                audioSource.Play();
-                break;            
-            case "Respawn":
-                audioSource.clip = explodeSound;
-                audioSource.Play();
-                explodeParticles.Play();
-                playerMovement.enabled = false;
-                Invoke("ReloadLevel", 2f);
-                break;
-        }
+            switch (other.gameObject.tag)
+            {
+                case "Finish":
+                    finishParticles.Play();
+                    audioSource.Stop();
+                    Debug.Log("FINISH");
+                    Debug.Log(audioSource.isPlaying);
+                    audioSource.PlayOneShot(successSound);
+                    playerEnabled = false;
+                    break;
+                case "Respawn":
+                    explodeParticles.Play();
+                    audioSource.Stop();
+                    audioSource.PlayOneShot(explodeSound);
+                    playerMovement.enabled = false;
+                    Invoke("ReloadLevel", 2f);
+                    playerEnabled = false;
+                    break;
+            }
+        }        
     }
 
     private void ReloadLevel()
