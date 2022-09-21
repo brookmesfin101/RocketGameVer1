@@ -14,7 +14,7 @@ public class PlayerCollide : MonoBehaviour
 
     PlayerMovement playerMovement;
     AudioSource audioSource;
-    bool playerEnabled = true;
+    bool isTransitioning = false;
 
     private void Start()
     {
@@ -24,29 +24,28 @@ public class PlayerCollide : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (playerEnabled)
+        if (!isTransitioning)
         {
             switch (other.gameObject.tag)
             {
                 case "Finish":
+                    isTransitioning = true;
                     finishParticles.Play();
                     audioSource.Stop();
-                    Debug.Log("FINISH");
-                    Debug.Log(audioSource.isPlaying);
                     audioSource.PlayOneShot(successSound);
-                    playerEnabled = false;
+                    Debug.Log("Play finish");
                     break;
                 case "Respawn":
+                    isTransitioning = true;
                     explodeParticles.Play();
                     audioSource.Stop();
                     audioSource.PlayOneShot(explodeSound);
                     playerMovement.enabled = false;
                     Invoke("ReloadLevel", 2f);
-                    playerEnabled = false;
                     break;
             }
         }        
-    }
+    }    
 
     private void ReloadLevel()
     {

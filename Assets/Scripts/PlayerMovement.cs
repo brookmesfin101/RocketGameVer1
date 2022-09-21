@@ -71,10 +71,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (!Input.GetKey(KeyCode.Space) && _audioSource.isPlaying)
-            {
-                _audioSource.Stop();
-            }
+            //if (!Input.GetKey(KeyCode.Space) && _audioSource.isPlaying)
+            //{
+            //    _audioSource.Stop();
+            //}
 
             rightThrustParticles.Stop();
             leftThrustParticles.Stop();            
