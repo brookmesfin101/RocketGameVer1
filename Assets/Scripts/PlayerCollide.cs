@@ -29,23 +29,33 @@ public class PlayerCollide : MonoBehaviour
             switch (other.gameObject.tag)
             {
                 case "Finish":
-                    isTransitioning = true;
-                    finishParticles.Play();
-                    audioSource.Stop();
-                    audioSource.PlayOneShot(successSound);
-                    Debug.Log("Play finish");
+                    FinishLevel();
                     break;
                 case "Respawn":
-                    isTransitioning = true;
-                    explodeParticles.Play();
-                    audioSource.Stop();
-                    audioSource.PlayOneShot(explodeSound);
-                    playerMovement.enabled = false;
-                    Invoke("ReloadLevel", 2f);
+                    Respawn();
                     break;
             }
         }        
-    }    
+    }
+
+    private void Respawn()
+    {
+        isTransitioning = true;
+        explodeParticles.Play();
+        audioSource.Stop();
+        audioSource.PlayOneShot(explodeSound);
+        playerMovement.enabled = false;
+        Invoke("ReloadLevel", 2f);
+    }
+
+    private void FinishLevel()
+    {
+        isTransitioning = true;
+        finishParticles.Play();
+        audioSource.Stop();
+        audioSource.PlayOneShot(successSound);
+        playerMovement.enabled = false;
+    }
 
     private void ReloadLevel()
     {

@@ -24,12 +24,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
-    {
+    //private void Update()
+    //{
         
-    }
+    //}
 
-    private void FixedUpdate()
+    private void Update()
     {
         ProcessThrust();
         ProcessRotation();
@@ -71,10 +71,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            //if (!Input.GetKey(KeyCode.Space) && _audioSource.isPlaying)
-            //{
-            //    _audioSource.Stop();
-            //}
+            if (!Input.GetKey(KeyCode.Space) && _audioSource.isPlaying)
+            {
+                _audioSource.Stop();
+            }
 
             rightThrustParticles.Stop();
             leftThrustParticles.Stop();            
@@ -104,7 +104,9 @@ public class PlayerMovement : MonoBehaviour
         } 
         else
         {
-            thrustParticles.Stop();          
+            thrustParticles.Stop();
+            //Debug.Log("STOP AUDIO");
+            //_audioSource.Stop();
         }
     }
 }
