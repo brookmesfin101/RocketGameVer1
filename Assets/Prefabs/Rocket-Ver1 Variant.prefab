@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6016040896582520912
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2577656363665432988, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577656363665432988, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735903361683560136, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: boost
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735903361683560136, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: leftButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735903361683560136, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: rightButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735903361683560136, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: thrustSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 666408778daed86469887eaad2156b74, type: 3}
+    - target: {fileID: 3735903361683560136, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: thrustFactor
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735903361683560136, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: thrustSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 3bf4d0ebe96107f4d8bcb9c1fce93562, type: 3}
+    - target: {fileID: 3735903361683560137, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_Size.y
+      value: 5.9697285
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735903361683560137, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735903361683560137, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_Center.y
+      value: -0.20936012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735903361683560138, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_Drag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735903361683560138, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -270
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770112317239389288, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546930838965630674, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+      propertyPath: m_Name
+      value: Rocket-Ver1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+--- !u!198 &3614513519590305948 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7013249999278497996, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+  m_PrefabInstance: {fileID: 6016040896582520912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5399389944776963226 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1842880298660472010, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+  m_PrefabInstance: {fileID: 6016040896582520912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7810566475618887298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4546930838965630674, guid: f2c79dab9b092694c8e6c1d2340ace3f, type: 3}
+  m_PrefabInstance: {fileID: 6016040896582520912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2107207555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810566475618887298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47182abdbd776f42aaec8983a677c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explodeParticles: {fileID: 5399389944776963226}
+  finishParticles: {fileID: 3614513519590305948}
+  powerUpSound: {fileID: 8300000, guid: 9d396bef148fea1419a7520d4bc8c802, type: 3}
+  successSound: {fileID: 8300000, guid: f657ef1ab1175d54c8472208bcf88407, type: 3}
+  explodeSound: {fileID: 8300000, guid: e6fa9bc79607ff749b2a783c96c9c91f, type: 3}

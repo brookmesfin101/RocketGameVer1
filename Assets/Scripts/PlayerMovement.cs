@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider), typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] ParticleSystem rightThrustParticles;
     [SerializeField] AudioClip thrustSound;
     [SerializeField] AudioClip thrustSound2;
+    [SerializeField] ButtonLogic boost;
+    [SerializeField] ButtonLogic leftButton;
+    [SerializeField] ButtonLogic rightButton;
 
     AudioSource _audioSource;
     Rigidbody rb;
@@ -24,20 +28,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    //private void Update()
-    //{
-        
-    //}
-
     private void Update()
+    {
+         
+    }
+
+    private void FixedUpdate()
     {
         ProcessThrust();
         ProcessRotation();
     }
 
     private void ProcessRotation()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
+    {        
+        float horizontal = leftButton.buttonPressed ? -1 : rightButton.buttonPressed ? 1 : 0;
         var rotation = new Vector3(horizontal, 0, 0);
         transform.Rotate(rotation * Time.deltaTime * rotateSpeed);
         LeftRightParticlesControl(horizontal);
@@ -45,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void LeftRightParticlesControl(float horizontal)
     {                
-        if (horizontal < 0)
+        if (leftButton.buttonPressed)
         {
             if (!rightThrustParticles.isPlaying)
             {
@@ -57,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             }
             PlayThrustSound();
         }
-        else if (horizontal > 0)
+        else if (rightButton.buttonPressed)
         {
             if (!leftThrustParticles.isPlaying)
             {
@@ -71,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (!Input.GetKey(KeyCode.Space) && _audioSource.isPlaying)
+            if (!boost.buttonPressed && _audioSource.isPlaying)
             {
                 _audioSource.Stop();
             }
@@ -91,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ProcessThrust()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (boost.buttonPressed)
         {            
             if (!thrustParticles.isPlaying)
             {
@@ -105,8 +109,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             thrustParticles.Stop();
-            //Debug.Log("STOP AUDIO");
-            //_audioSource.Stop();
         }
     }
 }
